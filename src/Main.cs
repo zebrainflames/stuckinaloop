@@ -33,6 +33,7 @@ namespace stuckinaloop
             var lvl = ll.FirstLevel();
             GetNode<Node2D>("Levels").AddChild(lvl);
             level = lvl;
+            lander.ResetToPos(level.StartPos);
         }
 
         private void ChangeLevel()

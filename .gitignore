@@ -1,3 +1,4 @@
 ﻿**/*.aseprite
 .mono/
 .import/
+.idea/

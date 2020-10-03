@@ -29,6 +29,20 @@ namespace stuckinaloop
             astronautCount = astronauts.Count;
             collected = 0;
             StartPos = GetNode<Position2D>("StartPos").Position;
+            
+            foreach (var astronaut in astronauts)
+            {
+                var dist = float.MaxValue;
+                foreach (var planet in planets)
+                {
+                    var pdist = (planet.Position - astronaut.Position).LengthSquared();
+                    if (pdist < dist)
+                    {
+                        dist = pdist;
+                        astronaut.ClosestPlanet = planet;
+                    }
+                }
+            }
         }
         
         public Vector2 GetGravity(Vector2 position)
