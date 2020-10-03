@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\jhkro\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\jhkro\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_stuckinaloop.286206088.00" t="ExcludeRecursive" />
+    <e p="C:\Users\jhkro\AppData\Roaming\JetBrains\Rider2020.2\scratches" t="IncludeRecursive" />
+    <e p="D:\RiderProjects\stuckinaloop" t="IncludeRecursive">
+      <e p=".gitignore" t="Include" />
+      <e p=".mono\temp\bin" t="ExcludeRecursive" />
+      <e p=".mono\temp\obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Properties" t="Include">
+        <e p="AssemblyInfo.cs" t="Include" />
+      </e>
+      <e p="src" t="Include">
+        <e p="Main.cs" t="Include" />
+      </e>
+      <e p="stuckinaloop.csproj" t="IncludeRecursive" />
+      <e p="stuckinaloop.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>
