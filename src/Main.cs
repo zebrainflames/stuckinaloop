@@ -21,14 +21,19 @@ namespace stuckinaloop
         private LevelBase level;
         private LevelLoader ll;
         private GameState state = GameState.Playing;
+        //TODO: figure out why timers didn't work
+        private Timer groundTimer;
+        private float groundTime = 1.0f;
         
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()
         {
             // TODO: proper level loading..?
             lander = GetNode<Lander>("Lander");
+            groundTimer = GetNode<Timer>("GroundTimer");
+            
             ll = new LevelLoader();
-
+            
 
             var lvl = ll.FirstLevel();
             GetNode<Node2D>("Levels").AddChild(lvl);
@@ -44,26 +49,30 @@ namespace stuckinaloop
             AddChild(lvl);
             level = lvl;
             lander.ResetToPos(level.StartPos);
-            
         }
         
         public override void _PhysicsProcess(float delta)
         {
-            if (level.LevelComplete)
+            if (level.LevelComplete && lander.Grounded)
             {
-                if (ll.LevelsLeft())
+                groundTime -= delta;
+                if (ll.LevelsLeft() && groundTime < 0f)
                 {
                     ChangeLevel();
+                    groundTime = 1.0f;
                     return;
                 }
-                else
-                {
-                    state = GameState.Won;
-                    // TODO: load some sort of final screen here
-                }
+                state = GameState.Won;
                 
+                // TODO: load some sort of final screen here
+
             }
             lander.Gravity = level.GetGravity(lander.Position);
+        }
+
+        public void GroundTimerTimeout()
+        {
+            
         }
     }
 }

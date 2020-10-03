@@ -19,7 +19,7 @@ namespace stuckinaloop
             // TODO: randomize
             rotationSpeedScale = 1.0f;
             
-            this.Connect("body_entered", this, nameof(OnBodyEntered));
+            Connect("body_entered", this, nameof(OnBodyEntered));
         }
 
         
@@ -37,7 +37,6 @@ namespace stuckinaloop
         //
         public void OnBodyEntered(PhysicsBody2D body)
         {
-            //GD.Print($"{body}");
             Rescued = true;
         }
     }

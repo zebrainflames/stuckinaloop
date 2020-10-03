@@ -10,6 +10,7 @@ namespace stuckinaloop
         [Export] public float ThrusterPower = 100.0f;
         
         public Vector2 Gravity { get; set; }
+        public bool Grounded { get; private set; }
         
         private float inputRotation;
         private float inputThrust;
@@ -71,13 +72,14 @@ namespace stuckinaloop
             velocity += acceleration * delta;
             velocity = MoveAndSlide(velocity);
 
+            Grounded = false;
             var slideCount = GetSlideCount();
             if (slideCount > 0)
             {
                 velocity *= Friction;
 
                 //var col = GetSlideCollision(0);
-                
+                Grounded = true;
                 //GD.Print($"{body} {legs} {col}");
             }
             // TODO: react to collisions?
