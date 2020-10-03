@@ -10,7 +10,8 @@ namespace stuckinaloop
         private readonly List<string> paths = new List<string>
         {
             //"res://scenes/Level.tscn", 
-            "res://scenes/Level1.tscn"
+            "res://scenes/Level1.tscn",
+            "res://scenes/Level2.tscn"
         };
 
         public LevelBase FirstLevel()

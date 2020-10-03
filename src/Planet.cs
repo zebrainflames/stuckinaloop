@@ -40,7 +40,7 @@ namespace stuckinaloop
     {
         protected PlanetSize Size { get; set; }
 
-        protected float Density { get; set; } = 2.0f;
+        protected float Density { get; set; } = 280.0f;
         
         public override void _Ready()
         {
@@ -50,7 +50,7 @@ namespace stuckinaloop
         public Vector2 GravityForPosition(Vector2 pos)
         {
             var dir = (pos - this.Position);
-            var r2 = dir.Length();
+            var r2 = dir.LengthSquared();
             var mass = Size.SizeToMass(Density);
             
             // 2d gravity: F = -2G * ( m1 * m2) / r

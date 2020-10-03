@@ -56,6 +56,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\Astronaut.cs" />
     <Compile Include="src\Lander.cs" />
+    <Compile Include="src\LargePlanet.cs" />
     <Compile Include="src\Level.cs" />
     <Compile Include="src\Level1.cs" />
     <Compile Include="src\LevelBase.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="src\Main.cs" />
     <Compile Include="src\MediumPlanet.cs" />
     <Compile Include="src\Planet.cs" />
+    <Compile Include="src\SmallPlanet.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />

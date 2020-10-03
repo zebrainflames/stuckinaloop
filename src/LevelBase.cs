@@ -33,9 +33,13 @@ namespace stuckinaloop
         
         public Vector2 GetGravity(Vector2 position)
         {
-            return -planets.Aggregate(new Vector2(), 
-                (sum, p) => p.GravityForPosition(position)
-            );
+            var gravity = Vector2.Zero;
+            foreach (var planet in planets)
+            {
+                gravity += planet.GravityForPosition(position);
+            }
+
+            return -gravity;
         }
 
         public override void _PhysicsProcess(float delta)

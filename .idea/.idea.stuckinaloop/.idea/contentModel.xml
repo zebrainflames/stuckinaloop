@@ -42,6 +42,7 @@
       <e p="src" t="Include">
         <e p="Astronaut.cs" t="Include" />
         <e p="Lander.cs" t="Include" />
+        <e p="LargePlanet.cs" t="Include" />
         <e p="Level.cs" t="Include" />
         <e p="Level1.cs" t="Include" />
         <e p="LevelBase.cs" t="Include" />
@@ -49,6 +50,7 @@
         <e p="Main.cs" t="Include" />
         <e p="MediumPlanet.cs" t="Include" />
         <e p="Planet.cs" t="Include" />
+        <e p="SmallPlanet.cs" t="Include" />
       </e>
       <e p="stuckinaloop.csproj" t="IncludeRecursive" />
       <e p="stuckinaloop.sln" t="IncludeFlat" />
