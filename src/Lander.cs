@@ -1,3 +1,4 @@
+using System.Linq;
 using Godot;
 
 namespace stuckinaloop
@@ -6,7 +7,7 @@ namespace stuckinaloop
     {
 
         [Export] public float RotationSpeed = 3.5f;
-        [Export] public float ThrusterPower = 3.5f;
+        [Export] public float ThrusterPower = 100.0f;
         
         public Vector2 Gravity { get; set; }
         
@@ -15,6 +16,11 @@ namespace stuckinaloop
         
         //private Vector2 acceleration = Vector2.Zero;
         private Vector2 velocity = Vector2.Zero;
+        
+        private const float Friction = 0.87f;
+
+        private CollisionPolygon2D legs;
+        private CollisionShape2D body;
         
         private void ProcessInput()
         {
@@ -36,10 +42,13 @@ namespace stuckinaloop
             }
         }
     
-        // Called when the node enters the scene tree for the first time.
         public override void _Ready()
         {
-        
+            legs = GetNode<CollisionPolygon2D>("LegCollider");
+            body = GetNode<CollisionShape2D>("BodyCollider");
+            
+            // Connect signals for collisions...
+
         }
 
         public override void _Process(float delta)
@@ -51,17 +60,36 @@ namespace stuckinaloop
         {
             //Rotate lander
             Rotate(inputRotation * RotationSpeed * delta);
-            
-            // TODO: apply gravity to total velocity
-            velocity -= Gravity * delta;
+
+
+            var acceleration = -Gravity;
             
             // Apply thrust
-            velocity += Transform.y * ThrusterPower * -inputThrust;
+            //velocity += Transform.y * ThrusterPower * -inputThrust;
+            acceleration += Transform.y * ThrusterPower * -inputThrust;
             
-            
+            velocity += acceleration * delta;
             velocity = MoveAndSlide(velocity);
 
+            var slideCount = GetSlideCount();
+            if (slideCount > 0)
+            {
+                velocity *= Friction;
+
+                //var col = GetSlideCollision(0);
+                
+                //GD.Print($"{body} {legs} {col}");
+            }
             // TODO: react to collisions?
+        }
+
+        public void ResetToPos(Vector2 pos)
+        {
+            velocity = Vector2.Zero;
+            Rotation = 0f;
+            inputRotation = 0f;
+            inputThrust = 0f;
+            Position = pos;
         }
     }
 }

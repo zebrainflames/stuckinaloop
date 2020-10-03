@@ -40,7 +40,7 @@ namespace stuckinaloop
     {
         protected PlanetSize Size { get; set; }
 
-        protected float Density { get; set; } = 1.0f;
+        protected float Density { get; set; } = 2.0f;
         
         public override void _Ready()
         {

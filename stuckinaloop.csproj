@@ -54,14 +54,39 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\Astronaut.cs" />
     <Compile Include="src\Lander.cs" />
+    <Compile Include="src\Level.cs" />
+    <Compile Include="src\Level1.cs" />
+    <Compile Include="src\LevelBase.cs" />
+    <Compile Include="src\LevelLoader.cs" />
     <Compile Include="src\Main.cs" />
     <Compile Include="src\MediumPlanet.cs" />
     <Compile Include="src\Planet.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="assets\ase\astronaut.aseprite" />
+    <Content Include="assets\ase\astronaut.png" />
+    <Content Include="assets\ase\astronaut.png.import" />
+    <Content Include="assets\ase\lander.aseprite" />
+    <Content Include="assets\ase\lander.png" />
+    <Content Include="assets\ase\lander.png.import" />
+    <Content Include="assets\ase\planet_large.aseprite" />
+    <Content Include="assets\ase\planet_large.png" />
+    <Content Include="assets\ase\planet_large.png.import" />
+    <Content Include="assets\ase\planet_medium.aseprite" />
+    <Content Include="assets\ase\planet_medium.png" />
+    <Content Include="assets\ase\planet_medium.png.import" />
+    <Content Include="assets\ase\planet_small.png" />
+    <Content Include="assets\ase\planet_small.png.import" />
     <Content Include="README.md" />
+    <Content Include="scenes\Astronaut.tscn" />
+    <Content Include="scenes\Lander.tscn" />
+    <Content Include="scenes\Level.tscn" />
+    <Content Include="scenes\Level1.tscn" />
+    <Content Include="scenes\Main.tscn" />
+    <Content Include="scenes\MediumPlanet.tscn" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

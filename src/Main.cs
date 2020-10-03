@@ -5,28 +5,64 @@ using Godot.Collections;
 
 namespace stuckinaloop
 {
+    public enum GameState
+    {
+        Paused, 
+        Playing,
+        Won,
+        Lost,
+    }
+    
     public class Main : Node2D
     {
 
         private Lander lander;
-        private List<Planet> planets;
+        // currently active level..
+        private LevelBase level;
+        private LevelLoader ll;
+        private GameState state = GameState.Playing;
         
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()
         {
             // TODO: proper level loading..?
             lander = GetNode<Lander>("Lander");
-            //bodies = new Array<DestructibleBody>(GetNode<Node2D>("Bodies").GetChildren());
-            planets = new Array<Planet>(GetNode<Node2D>("Levels/level/planets").GetChildren()).ToList();
-            GD.Print($"Got {planets.Count} planets");
+            ll = new LevelLoader();
+
+
+            var lvl = ll.FirstLevel();
+            GetNode<Node2D>("Levels").AddChild(lvl);
+            level = lvl;
         }
 
+        private void ChangeLevel()
+        {
+            // TODO: how to cleanup previous level..?
+            level.QueueFree();
+            var lvl = ll.NextLevel();
+            AddChild(lvl);
+            level = lvl;
+            lander.ResetToPos(level.StartPos);
+            
+        }
+        
         public override void _PhysicsProcess(float delta)
         {
-            lander.Gravity = -planets.Aggregate(new Vector2(), 
-                (sum, p) => sum += p.GravityForPosition(lander.Position)
-            );
-            
+            if (level.LevelComplete)
+            {
+                if (ll.LevelsLeft())
+                {
+                    ChangeLevel();
+                    return;
+                }
+                else
+                {
+                    state = GameState.Won;
+                    // TODO: load some sort of final screen here
+                }
+                
+            }
+            lander.Gravity = level.GetGravity(lander.Position);
         }
     }
 }
