@@ -40,7 +40,7 @@ namespace stuckinaloop
                 inputRotation += 1.0f;
             }
 
-            if (Input.IsActionPressed("thrust"))
+            if (Input.IsActionPressed("thrust") && Fuel > 0.0f)
             {
                 inputThrust += 1.0f;
             }
