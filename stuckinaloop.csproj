@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\Astronaut.cs" />
+    <Compile Include="src\Intro.cs" />
     <Compile Include="src\Lander.cs" />
     <Compile Include="src\LargePlanet.cs" />
     <Compile Include="src\Level.cs" />

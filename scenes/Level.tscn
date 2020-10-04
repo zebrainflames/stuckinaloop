@@ -22,7 +22,7 @@ position = Vector2( 384, 192 )
 position = Vector2( 400, 568 )
 
 [node name="StartPos" type="Position2D" parent="."]
-position = Vector2( 392, 256 )
+position = Vector2( 400, 280 )
 
 [node name="AstronautPickupSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
