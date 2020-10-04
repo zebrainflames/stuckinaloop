@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Level1.cs" type="Script" id=1]
-[ext_resource path="res://scenes/LargePlanet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Astronaut.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sfx/powerpick.wav" type="AudioStream" id=4]
 [ext_resource path="res://scenes/SmallPlanet.tscn" type="PackedScene" id=5]
@@ -17,11 +16,17 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="LargePlanet" parent="planets" instance=ExtResource( 2 )]
-position = Vector2( 176, 608 )
-
 [node name="SmallPlanet" parent="planets" instance=ExtResource( 5 )]
-position = Vector2( 488, 232 )
+position = Vector2( 200, 640 )
+
+[node name="SmallPlanet2" parent="planets" instance=ExtResource( 5 )]
+position = Vector2( 600, 640 )
+
+[node name="SmallPlanet3" parent="planets" instance=ExtResource( 5 )]
+position = Vector2( 600, 160 )
+
+[node name="SmallPlanet4" parent="planets" instance=ExtResource( 5 )]
+position = Vector2( 200, 160 )
 
 [node name="astronauts" type="Node2D" parent="."]
 __meta__ = {
@@ -29,19 +34,22 @@ __meta__ = {
 }
 
 [node name="astronaut" parent="astronauts" instance=ExtResource( 3 )]
-position = Vector2( 376, 208 )
+position = Vector2( 192, 256 )
 
 [node name="astronaut2" parent="astronauts" instance=ExtResource( 3 )]
-position = Vector2( 304, 192 )
+position = Vector2( 600, 256 )
 
 [node name="astronaut3" parent="astronauts" instance=ExtResource( 3 )]
-position = Vector2( 600, 312 )
+position = Vector2( 592, 536 )
 
 [node name="astronaut4" parent="astronauts" instance=ExtResource( 3 )]
-position = Vector2( 408, 104 )
+position = Vector2( 192, 528 )
+
+[node name="astronaut5" parent="astronauts" instance=ExtResource( 3 )]
+position = Vector2( 384, 312 )
 
 [node name="StartPos" type="Position2D" parent="."]
-position = Vector2( 192, 448 )
+position = Vector2( 376, 456 )
 
 [node name="AstronautPickupSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

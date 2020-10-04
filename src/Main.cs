@@ -66,6 +66,7 @@ namespace stuckinaloop
             state = GameState.Playing;
             landText.Hide();
             restartText.Hide();
+            fuelBar.MaxValue = level.StartingFuel;
         }
 
         private void RestartLevel()
@@ -138,8 +139,10 @@ namespace stuckinaloop
         {
             if (level.LevelComplete && state != GameState.Won)
             {
+                // TODO: wtf with this state handling
+                if (!winSound.Playing && state == GameState.Playing) winSound.Play();
                 state = GameState.Won;
-                if (!winSound.Playing && state != GameState.OutOfFuel) winSound.Play();
+                
             }
             
             if (lander.Fuel <= 0.0f)
