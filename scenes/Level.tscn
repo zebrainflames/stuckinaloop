@@ -10,18 +10,15 @@ script = ExtResource( 1 )
 [node name="planets" type="Node2D" parent="."]
 
 [node name="MediumPlanet" parent="planets" instance=ExtResource( 2 )]
-position = Vector2( 472, 312 )
+position = Vector2( 400, 400 )
 
 [node name="astronauts" type="Node2D" parent="."]
 
 [node name="astronaut" parent="astronauts" instance=ExtResource( 3 )]
-position = Vector2( 232, 168 )
+position = Vector2( 384, 192 )
 
 [node name="astronaut2" parent="astronauts" instance=ExtResource( 3 )]
-position = Vector2( 696, 208 )
-
-[node name="astronaut3" parent="astronauts" instance=ExtResource( 3 )]
-position = Vector2( 632, 160 )
+position = Vector2( 400, 568 )
 
 [node name="StartPos" type="Position2D" parent="."]
-position = Vector2( 464, 176 )
+position = Vector2( 392, 256 )

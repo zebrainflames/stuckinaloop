@@ -16,7 +16,7 @@ __meta__ = {
 }
 
 [node name="SmallPlanet" parent="planets" instance=ExtResource( 2 )]
-position = Vector2( 752, 424 )
+position = Vector2( 384, 408 )
 
 [node name="astronauts" type="Node2D" parent="."]
 __meta__ = {
@@ -24,10 +24,10 @@ __meta__ = {
 }
 
 [node name="astronaut3" parent="astronauts" instance=ExtResource( 3 )]
-position = Vector2( 672, 136 )
+position = Vector2( 744, 400 )
 
 [node name="astronaut4" parent="astronauts" instance=ExtResource( 3 )]
-position = Vector2( 416, 104 )
+position = Vector2( 144, 224 )
 
 [node name="StartPos" type="Position2D" parent="."]
 position = Vector2( 520, 296 )
