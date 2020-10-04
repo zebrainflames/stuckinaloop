@@ -9,6 +9,7 @@ namespace stuckinaloop
     {
         public bool LevelComplete { get; set; } 
         public Vector2 StartPos { get; private set; }
+        public float StartingFuel { get; protected set; } = 100.0f;
         
         private List<Planet> planets;
         private List<Astronaut> astronauts;

@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Main.cs" type="Script" id=1]
 [ext_resource path="res://scenes/Lander.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/ui_theme.tres" type="Theme" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.388235, 0.670588, 0.247059, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.156863, 0.207843, 0.25098, 1 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -12,4 +19,26 @@ script = ExtResource( 1 )
 position = Vector2( 352, 240 )
 
 [node name="GroundTimer" type="Timer" parent="."]
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FuelBar" type="ProgressBar" parent="UI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 752.0
+margin_right = 264.0
+margin_bottom = 768.0
+theme = ExtResource( 3 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+rounded = true
+allow_greater = true
+allow_lesser = true
 [connection signal="timeout" from="GroundTimer" to="." method="GroundTimerTimeout"]

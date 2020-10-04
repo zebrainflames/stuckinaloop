@@ -11,12 +11,14 @@ namespace stuckinaloop
         
         public Vector2 Gravity { get; set; }
         public bool Grounded { get; private set; }
+        public float Fuel { get; set; }
         
         private float inputRotation;
         private float inputThrust;
         
         private Vector2 velocity = Vector2.Zero;
         private const float Friction = 0.87f;
+        private const float FuelBurnRate = 100.0f / 6.0f; // -> units of fuel / seconds to burn tank 
 
         //TODO: remove this or enable collision detection by part
         private CollisionPolygon2D legs;
@@ -91,6 +93,13 @@ namespace stuckinaloop
                 Grounded = true;
                 //GD.Print($"{body} {legs} {col}");
             }
+            
+            // burn fuel
+            if (inputThrust > 0.0f)
+            {
+                Fuel -= FuelBurnRate * delta;
+            }
+            
             // TODO: react to collisions?
         }
 
