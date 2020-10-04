@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Level.cs" type="Script" id=1]
 [ext_resource path="res://scenes/MediumPlanet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Astronaut.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sfx/powerpick.wav" type="AudioStream" id=4]
 
 [node name="level" type="Node2D"]
 script = ExtResource( 1 )
@@ -22,3 +23,6 @@ position = Vector2( 400, 568 )
 
 [node name="StartPos" type="Position2D" parent="."]
 position = Vector2( 392, 256 )
+
+[node name="AstronautPickupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )

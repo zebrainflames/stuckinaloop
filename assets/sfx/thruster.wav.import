@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/thruster.wav-2bb6d1cf04c3d1dd97b2d4eb98448749.sample"
+
+[deps]
+
+source_file="res://assets/sfx/thruster.wav"
+dest_files=[ "res://.import/thruster.wav-2bb6d1cf04c3d1dd97b2d4eb98448749.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=false
+edit/loop=true
+compress/mode=0

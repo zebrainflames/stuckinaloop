@@ -25,6 +25,8 @@ namespace stuckinaloop
         private CollisionShape2D body;
 
         private AnimatedSprite thrusterAnimation;
+        private AudioStreamPlayer2D collisionSound;
+        private AudioStreamPlayer thrusterSound;
         
         private void ProcessInput()
         {
@@ -51,6 +53,8 @@ namespace stuckinaloop
             legs = GetNode<CollisionPolygon2D>("LegCollider");
             body = GetNode<CollisionShape2D>("BodyCollider");
             thrusterAnimation = GetNode<AnimatedSprite>("Animation");
+            collisionSound = GetNode<AudioStreamPlayer2D>("ColSound");
+            thrusterSound = GetNode<AudioStreamPlayer>("ThrusterSound");
         }
 
         public override void _Process(float delta)
@@ -60,11 +64,13 @@ namespace stuckinaloop
             {
                 thrusterAnimation.Show();
                 thrusterAnimation.Play();
+                if (!thrusterSound.Playing) thrusterSound.Play();
             }
             else
             {
                 thrusterAnimation.Stop();
                 thrusterAnimation.Hide();
+                thrusterSound.Stop();
             }
         }
 
@@ -83,15 +89,22 @@ namespace stuckinaloop
             velocity += acceleration * delta;
             velocity = MoveAndSlide(velocity);
 
-            Grounded = false;
             var slideCount = GetSlideCount();
             if (slideCount > 0)
             {
                 velocity *= Friction;
 
                 //var col = GetSlideCollision(0);
+                if (!collisionSound.Playing && !Grounded)
+                {
+                    collisionSound.Play();
+                }
                 Grounded = true;
-                //GD.Print($"{body} {legs} {col}");
+                
+            }
+            else
+            {
+                Grounded = false;
             }
             
             // burn fuel

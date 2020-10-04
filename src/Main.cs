@@ -28,7 +28,12 @@ namespace stuckinaloop
         private RichTextLabel restartText;
         private RichTextLabel landText;
         private Camera2D camera;
-
+        
+        //audio
+        private AudioStreamPlayer winSound;
+        private AudioStreamPlayer resetSound;
+        private int busIndex = AudioServer.GetBusIndex("Master");
+        private bool audioMuted = false;
         
         public override void _Ready()
         {
@@ -41,10 +46,14 @@ namespace stuckinaloop
             landText = GetNode<RichTextLabel>("UI/LandText");
             landText.Hide();
             camera = GetNode<Camera2D>("Camera");
+            winSound = GetNode<AudioStreamPlayer>("LevelWinSound");
+            resetSound = GetNode<AudioStreamPlayer>("LevelResetSound");
             
             ll = new LevelLoader();
             var lvl = ll.FirstLevel();
             SetCurrentLevel(lvl);
+
+            
         }
 
         private void SetCurrentLevel(LevelBase lvl)
@@ -56,10 +65,12 @@ namespace stuckinaloop
             lander.Fuel = level.StartingFuel;
             state = GameState.Playing;
             landText.Hide();
+            restartText.Hide();
         }
 
         private void RestartLevel()
         {
+            if (!resetSound.Playing) resetSound.Play();
             //TODO
             level.QueueFree();
             state = GameState.Playing;
@@ -83,6 +94,11 @@ namespace stuckinaloop
                 if (Input.IsActionPressed("restart"))
                 {
                     RestartLevel();
+                }
+
+                if (Input.IsActionPressed("mute_audio"))
+                {
+                    ToggleAudioMute();
                 }
             }
 
@@ -120,9 +136,10 @@ namespace stuckinaloop
         // TODO: refactor state handling, this is rather horrible
         public override void _PhysicsProcess(float delta)
         {
-            if (level.LevelComplete)
+            if (level.LevelComplete && state != GameState.Won)
             {
                 state = GameState.Won;
+                if (!winSound.Playing && state != GameState.OutOfFuel) winSound.Play();
             }
             
             if (lander.Fuel <= 0.0f)
@@ -157,6 +174,12 @@ namespace stuckinaloop
         public void GroundTimerTimeout()
         {
             
+        }
+
+        private void ToggleAudioMute()
+        {
+            audioMuted = !audioMuted;
+            AudioServer.SetBusMute(busIndex, audioMuted);
         }
     }
 }

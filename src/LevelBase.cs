@@ -17,6 +17,9 @@ namespace stuckinaloop
         private int astronautCount;
         private int collected;
         
+        //audiostuff
+        private AudioStreamPlayer astronautSound;
+        
         // TODO: when is _Ready() run when a level is instanced on the fly?
         public override void _Ready()
         {
@@ -44,6 +47,8 @@ namespace stuckinaloop
                     }
                 }
             }
+            
+            astronautSound = GetNode<AudioStreamPlayer>("AstronautPickupSound");
         }
         
         public Vector2 GetGravity(Vector2 position)
@@ -63,6 +68,8 @@ namespace stuckinaloop
             {
                 collected++;
                 a.QueueFree();
+                if (!astronautSound.Playing)
+                    astronautSound.Play();
             }
             astronauts.RemoveAll(a => a.Rescued);
             
