@@ -48,10 +48,28 @@ margin_right = 790.0
 margin_bottom = 110.0
 theme = ExtResource( 3 )
 bbcode_text = "You are out of fuel!
-	Press \"R\" to Restart!
+Press \"R\" to Restart!
 "
 text = "You are out of fuel!
-	Press \"R\" to Restart!
+Press \"R\" to Restart!
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LandText" type="RichTextLabel" parent="UI"]
+anchor_right = 1.0
+margin_left = 408.0
+margin_top = 8.0
+margin_right = 1188.0
+margin_bottom = 108.0
+theme = ExtResource( 3 )
+bbcode_text = "You Rescued everyone!
+Land on a planet to win!
+"
+text = "You Rescued everyone!
+Land on a planet to win!
 "
 scroll_active = false
 __meta__ = {

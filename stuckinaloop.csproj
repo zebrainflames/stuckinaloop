@@ -65,6 +65,7 @@
     <Compile Include="src\MediumPlanet.cs" />
     <Compile Include="src\Planet.cs" />
     <Compile Include="src\SmallPlanet.cs" />
+    <Compile Include="src\Victory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />

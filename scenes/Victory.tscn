@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://src/Victory.cs" type="Script" id=2]
+
+[node name="Victory" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchor_right = 1.0
+margin_right = 6.10352e-05
+margin_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "You have won the game!
+	Press \"R\" to restart"
+text = "You have won the game!
+	Press \"R\" to restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
