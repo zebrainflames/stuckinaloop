@@ -4,6 +4,10 @@ namespace stuckinaloop
 {
     public class Intro : Node2D
     {
+        public override void _Ready()
+        {
+            OS.SetWindowTitle("Orbital Rescue");
+        }
 
         public override void _Input(InputEvent @event)
         {
