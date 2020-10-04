@@ -15,13 +15,14 @@ namespace stuckinaloop
         private float inputRotation;
         private float inputThrust;
         
-        //private Vector2 acceleration = Vector2.Zero;
         private Vector2 velocity = Vector2.Zero;
-        
         private const float Friction = 0.87f;
 
+        //TODO: remove this or enable collision detection by part
         private CollisionPolygon2D legs;
         private CollisionShape2D body;
+
+        private AnimatedSprite thrusterAnimation;
         
         private void ProcessInput()
         {
@@ -47,14 +48,22 @@ namespace stuckinaloop
         {
             legs = GetNode<CollisionPolygon2D>("LegCollider");
             body = GetNode<CollisionShape2D>("BodyCollider");
-            
-            // Connect signals for collisions...
-
+            thrusterAnimation = GetNode<AnimatedSprite>("Animation");
         }
 
         public override void _Process(float delta)
         {
             ProcessInput();
+            if (inputThrust > 0.0f)
+            {
+                thrusterAnimation.Show();
+                thrusterAnimation.Play();
+            }
+            else
+            {
+                thrusterAnimation.Stop();
+                thrusterAnimation.Hide();
+            }
         }
 
         public override void _PhysicsProcess(float delta)
